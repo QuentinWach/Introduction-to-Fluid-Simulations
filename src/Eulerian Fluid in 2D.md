@@ -69,7 +69,7 @@ What is $s$?
 ### Solving the Grid
 Naturally, we want to solve the whole grid. One, and possibly the simplest method here is to use the [Gauss-Seidel method]():
 
-For $n$ iterations and for all $i,j$, we compute the general case.
+For $n$ iterations and for all $i,j$ , we compute the general case.
 
 An issue here is that we access boundary cells outside of the grid! To resolve this problem, we can add border cells and set $s^{i,j} = 0$ for them to make them walls. Alternatively, we could copy the neighbor cells that are inside the grid.
 
