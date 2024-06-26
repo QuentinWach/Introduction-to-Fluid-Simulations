@@ -8,11 +8,13 @@ We assume that:
 
 Our velocity vector
 $$
+\begin{equation*}
 \vec{v} = 
 \begin{bmatrix}
 v_x \\
 v_y \\
 \end{bmatrix}
+\end{equation*}
 $$
 
 are saved not within the centers of the cells (_"collocated"_ grid) but rather at the boundaries creating a so called _"staggered"_ grid.
