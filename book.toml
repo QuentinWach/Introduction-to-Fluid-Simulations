@@ -1,2 +1,7 @@
 [book]
 title = "Introduction to Fluid Simulations"
+author = "Quentin Wach"
+description = "A hands-on guide to fluid simulations."
+
+[output.html]
+theme = "white"

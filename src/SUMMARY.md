@@ -53,5 +53,3 @@
     - [Other Applications: Engineering, Visual Effects, and More]()
 
 [Conclusion](CONCLUSION.md)
-
-Congratulations on completing the book! You now have a basic understanding of fluid simulations and have completed several projects to demonstrate your knowledge. Keep experimenting and exploring more advanced topics to further your skills in this exciting field.
