@@ -6,8 +6,9 @@ We assume that:
 1. Water is an [incompressable fluid]().
 2. It has no viscosity (even though adding it would be rather easy).
 
-Our velocity vector 
-$$\vec{v} = 
+Our velocity vector
+$$
+\vec{v} = 
 \begin{bmatrix}
 v_x \\
 v_y \\
@@ -46,14 +47,12 @@ $$
 s \leftarrow  s^{i+1. j} + s^{i-1, j} + s^{i,j+1} + s^{i,j-1}
 $$
 and
-$$
-\begin{align*}
+$$\begin{align*}
 v_x^{i,j} &\leftarrow &&v_x^{i,j} &&+ d \cdot s^{i-1,j}/s \\
 v_x^{i+1,j} &\leftarrow &&v_x^{i+1,j} &&+ d \cdot s^{i+1,j}/s \\
 v_y^{i,j} &\leftarrow &&v_y^{i,j} &&+ d \cdot s^{i,j+1}/s \\
 v_y^{i,j+1} &\leftarrow &&v_y^{i,j+1} &&+ d \cdot s^{i,j+1}/s.
-\end{align*}
-$$
+\end{align*}$$
 
 What is $s$?
 
