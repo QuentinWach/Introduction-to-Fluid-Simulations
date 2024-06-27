@@ -3,22 +3,22 @@
 We will look at a 2D simulation here first. Though moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations.
 
 We assume that:
-1. Water is an [incompressable fluid]().
-2. It has no viscosity (even though adding it would be rather easy).
+1. Water is an [incompressable fluid](https://en.wikipedia.org/wiki/Incompressible_flow).
+2. It has no [viscosity](https://en.wikipedia.org/wiki/Viscosity) (even though adding it would be rather easy).
 
 Our velocity vector
 
 $$
-    \vec{v} = 
+    \vec{v} =
         \begin{bmatrix}
-        v_x \\
-        v_y \\
+            v_x \\
+            v_y 
         \end{bmatrix}
 $$
 
 are saved not within the centers of the cells (_"collocated"_ grid) but rather at the boundaries creating a so called _"staggered"_ grid.
 
-The indices for the grid positions are notated as $i, j$.
+The indices for the grid positions are notated as $i, j$ .
 
 ### Velocity Update
 Now, for all $i,j$ we update the velocity
@@ -27,9 +27,9 @@ $$
 v_x^{i,j} \leftarrow v_x^{i,j} + \Delta t \cdot g
 $$
 
-with the gravity $g: -9,81\;$m/s for time-steps $\Delta t$ of e.g. $\frac{1}{30}\;$s.
+with the gravity $g: -9,81\;$ m/s for time-steps $\Delta t$ of e.g. $\frac{1}{30}\;$ s.
 
->**Question**: This is the simplest form of integration called [Euler integration](). If you have ever worked with chaotic systems, you'll may know that this can lead to large errors quickly! So why does this work here? Or does it?
+>**Question**: This is the simplest form of integration called the [Euler method](https://en.wikipedia.org/wiki/Euler_method). If you have ever worked with chaotic systems, you'll may know that this can lead to large errors quickly! So why does this work here? Or does it?
 
 ### Divergence (Total Outflow)
 We calculate the total outflow of a cell as
@@ -57,17 +57,17 @@ and
 
 $$
 \begin{align*}
-v_x^{i,j} &\leftarrow &&v_x^{i,j} &&+ d \cdot s^{i-1,j}/s \\
-v_x^{i+1,j} &\leftarrow &&v_x^{i+1,j} &&+ d \cdot s^{i+1,j}/s \\
-v_y^{i,j} &\leftarrow &&v_y^{i,j} &&+ d \cdot s^{i,j+1}/s \\
-v_y^{i,j+1} &\leftarrow &&v_y^{i,j+1} &&+ d \cdot s^{i,j+1}/s.
+    v_x^{i,j} &\leftarrow v_x^{i,j} + d \cdot s^{i-1,j}/s \\
+    v_x^{i+1,j} &\leftarrow v_x^{i+1,j} + d \cdot s^{i+1,j}/s \\
+    v_y^{i,j} &\leftarrow v_y^{i,j} + d \cdot s^{i,j+1}/s \\
+    v_y^{i,j+1} &\leftarrow v_y^{i,j+1} + d \cdot s^{i,j+1}/s.
 \end{align*}
 $$
 
 What is $s$?
 
 ### Solving the Grid
-Naturally, we want to solve the whole grid. One, and possibly the simplest method here is to use the [Gauss-Seidel method]():
+Naturally, we want to solve the whole grid. One, and possibly the simplest method here is to use the [Gauss-Seidel method](https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method):
 
 For $n$ iterations and for all $i,j$ , we compute the general case.
 
