@@ -27,7 +27,7 @@ $$
 v_x^{i,j} \leftarrow v_x^{i,j} + \Delta t \cdot g
 $$
 
-with the gravity \\(g: -9,81\;\\) m/s for time-steps \\(\Delta t\\) of e.g. \\(\frac{1}{30}\\;\\) s.
+with the gravity \\(g: -9.81\\;\\) m/s for time-steps \\(\Delta t\\) of e.g. \\(\frac{1}{30}\\;\\) s.
 
 >**Question**: This is the simplest form of integration called the [Euler method](https://en.wikipedia.org/wiki/Euler_method). If you have ever worked with chaotic systems, you'll may know that this can lead to large errors quickly! So why does this work here? Or does it?
 
