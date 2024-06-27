@@ -56,15 +56,13 @@ $$
 and
 
 $$
-\begin{align*}
-    v_x^{i,j} &\leftarrow v_x^{i,j} + d \cdot s^{i-1,j}/s \\
-    v_x^{i+1,j} &\leftarrow v_x^{i+1,j} + d \cdot s^{i+1,j}/s \\
-    v_y^{i,j} &\leftarrow v_y^{i,j} + d \cdot s^{i,j+1}/s \\
-    v_y^{i,j+1} &\leftarrow v_y^{i,j+1} + d \cdot s^{i,j+1}/s.
-\end{align*}
+v_x^{i,j} \leftarrow v_x^{i,j} + d \cdot s^{i-1,j}/s \\
+v_x^{i+1,j} \leftarrow v_x^{i+1,j} + d \cdot s^{i+1,j}/s \\
+v_y^{i,j} \leftarrow v_y^{i,j} + d \cdot s^{i,j+1}/s \\
+v_y^{i,j+1} \leftarrow v_y^{i,j+1} + d \cdot s^{i,j+1}/s.
 $$
 
-What is $s$?
+What is $s$ ?
 
 ### Solving the Grid
 Naturally, we want to solve the whole grid. One, and possibly the simplest method here is to use the [Gauss-Seidel method](https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method):
@@ -76,7 +74,7 @@ An issue here is that we access boundary cells outside of the grid! To resolve t
 ### Measuring Pressure
 We can also store a physical pressure value $p^{i,j}$ inside each cell!
 
-For the $n$ iterations and all $i,j$, we can then additionally calculate it as
+For the $n$ iterations and all $i,j$ , we can then additionally calculate it as
 
 $$
     p^{i,j} \leftarrow p^{i,j} + \frac{d}{s}\cdot \frac{\rho \; h}{\Delta t},
@@ -95,14 +93,14 @@ $$
 d \leftarrow o\cdot(v_x^{i+1, j} - v_x^{i,j} + v_y^{i,j+1} - v_y^{i,j})
 $$
 
-e.g. $o=1.9$. Doing so increases the convergence of the method dramatically! It is very possible that the simulation will collapse and lead to an physically implausible result if we do not overrelax.
+e.g. $o=1.9$ . Doing so increases the convergence of the method dramatically! It is very possible that the simulation will collapse and lead to an physically implausible result if we do not overrelax.
 
 And the pressure values still remain correct!
 
 ### Semi-Lagrangian Advection
 In the real world, fluids are made of particles. We don't have static grids like we assume here. It is merely a useful abstraction. But we still need to move the velocity values in the grid just like the velocity state is carried by the particles in the real world!
 
-We resolve this with [semi-Lagrangian advection](). (Lagrangian rather than Eulerian because we consider particles rather than a grid.)
+We resolve this with a semi-Lagrangian approach. (Lagrangian rather than Eulerian because we consider particles rather than a grid.)
 
 ...
 
