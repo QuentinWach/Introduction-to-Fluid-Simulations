@@ -6,4 +6,4 @@ description = "A hands-on guide to fluid simulations."
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-mathjax-support = True
+mathjax-support = true
