@@ -11,23 +11,23 @@ Our velocity vector
 $$
     \vec{v} =
         \begin{bmatrix}
-            v_x \\
+            v_x \\\\
             v_y 
         \end{bmatrix}
 $$
 
 are saved not within the centers of the cells (_"collocated"_ grid) but rather at the boundaries creating a so called _"staggered"_ grid.
 
-The indices for the grid positions are notated as \(i, j\) .
+The indices for the grid positions are notated as \\(i, j\\) .
 
 ### Velocity Update
-Now, for all $i,j$ we update the velocity
+Now, for all \\(i,j\\) we update the velocity
 
 $$
 v_x^{i,j} \leftarrow v_x^{i,j} + \Delta t \cdot g
 $$
 
-with the gravity $g: -9,81\;$ m/s for time-steps $\Delta t$ of e.g. $\frac{1}{30}\;$ s.
+with the gravity \\(g: -9,81\;\\) m/s for time-steps \\(\Delta t\\) of e.g. $\frac{1}{30}\;$ s.
 
 >**Question**: This is the simplest form of integration called the [Euler method](https://en.wikipedia.org/wiki/Euler_method). If you have ever worked with chaotic systems, you'll may know that this can lead to large errors quickly! So why does this work here? Or does it?
 
@@ -56,9 +56,9 @@ $$
 and
 
 $$
-v_x^{i,j} \leftarrow v_x^{i,j} + d \cdot s^{i-1,j}/s \\
-v_x^{i+1,j} \leftarrow v_x^{i+1,j} + d \cdot s^{i+1,j}/s \\
-v_y^{i,j} \leftarrow v_y^{i,j} + d \cdot s^{i,j+1}/s \\
+v_x^{i,j} \leftarrow v_x^{i,j} + d \cdot s^{i-1,j}/s \\\\
+v_x^{i+1,j} \leftarrow v_x^{i+1,j} + d \cdot s^{i+1,j}/s \\\\
+v_y^{i,j} \leftarrow v_y^{i,j} + d \cdot s^{i,j+1}/s \\\\
 v_y^{i,j+1} \leftarrow v_y^{i,j+1} + d \cdot s^{i,j+1}/s.
 $$
 

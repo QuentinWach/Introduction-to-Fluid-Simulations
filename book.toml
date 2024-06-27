@@ -3,9 +3,6 @@ title = "Introduction to Fluid Simulations"
 author = "Quentin Wach"
 description = "A hands-on guide to fluid simulations."
 
-
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-smart-punctuation = true
-mathjax-support = true
