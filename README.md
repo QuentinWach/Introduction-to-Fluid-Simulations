@@ -4,4 +4,5 @@ This book provides a **hands-on** introduction to fluid simulations through **pr
 
 The chapters are kept very short and you'll quickly have created your first project.
 
-Enjoy!
+## FAQ
+>**Why are the MathJax equations written so weirdly?** The reason for this can be found in the [documentation of mdbook on MathJax](https://rust-lang.github.io/mdBook/format/mathjax.html). In short, they don't support this for whatever reason.
