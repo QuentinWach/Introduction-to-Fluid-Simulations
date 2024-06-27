@@ -18,7 +18,7 @@ $$
 
 are saved not within the centers of the cells (_"collocated"_ grid) but rather at the boundaries creating a so called _"staggered"_ grid.
 
-The indices for the grid positions are notated as $i, j$ .
+The indices for the grid positions are notated as \(i, j\) .
 
 ### Velocity Update
 Now, for all $i,j$ we update the velocity

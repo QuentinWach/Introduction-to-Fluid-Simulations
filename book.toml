@@ -8,4 +8,4 @@ description = "A hands-on guide to fluid simulations."
 default-theme = "light"
 preferred-dark-theme = "navy"
 smart-punctuation = true
-mathjax-support = false
+mathjax-support = true
