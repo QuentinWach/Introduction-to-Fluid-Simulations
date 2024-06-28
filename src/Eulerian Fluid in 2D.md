@@ -97,13 +97,12 @@ e.g. \\(o=1.9\\) . Doing so increases the convergence of the method dramatically
 
 And the pressure values still remain correct!
 
-### Semi-Lagrangian Advection
+### Semi-Lagrangian [Advection](https://en.wikipedia.org/wiki/Advection)
 In the real world, fluids are made of particles. We don't have static grids like we assume here. It is merely a useful abstraction. But we still need to move the velocity values in the grid just like the velocity state is carried by the particles in the real world!
 
-We resolve this with a semi-Lagrangian approach. (Lagrangian rather than Eulerian because we consider particles rather than a grid.)
+While we don't actually simulate particles, this idea is why we call it a semi-Lagrangian approach. (Remember! _"Lagrangian"_ rather than _"Eulerian"_ because now we consider particles rather than a grid.)
 
-...
-
+Given a velocity within a grid \\(\vec{v}_t)\\) at time \\(t\\), we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\(\vec{v}\\) at the position \\(\vec{x}\\) where the
 ### Streamlines
 
 
