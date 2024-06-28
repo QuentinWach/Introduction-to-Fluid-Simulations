@@ -84,8 +84,8 @@ where \\(\rho\\) is the density of the fluid and \\(h\\) is the grid spacing.
 
 While not necessary for the simulation, it provides us with some interesting information without much additional effort!
 
-### Overrelaxation
-While the Guass-Seidel method is very simple to implement, it needs more iterations than global methods. Here comes _"overrelaxation"_ into play.
+### Over-Relaxation
+While the Guass-Seidel method is very simple to implement, it needs more iterations than global methods. Here comes _"over-relaxation"_ into play.
 
 We multiply the divergence by a scalar \\(1 \leq o \leq 2\\)
 
@@ -93,7 +93,7 @@ $$
 d \leftarrow o\cdot(v_x^{i+1, j} - v_x^{i,j} + v_y^{i,j+1} - v_y^{i,j})
 $$
 
-e.g. \\(o=1.9\\) . Doing so increases the convergence of the method dramatically! It is very possible that the simulation will collapse and lead to an physically implausible result if we do not overrelax.
+e.g. \\(o=1.9\\) . Doing so increases the convergence of the method dramatically! It is very possible that the simulation will collapse and lead to an physically implausible result if we do not over-relax.
 
 And the pressure values still remain correct!
 
@@ -105,13 +105,13 @@ In the real world, fluids are made of particles. We don't have static grids like
 
 While we don't actually simulate particles, this idea is why we call it a semi-Lagrangian approach. (Remember! _"Lagrangian"_ rather than _"Eulerian"_ because now we consider particles rather than a grid.)
 
-Given a velocity within a grid \\(\vec{v}_t\\) at time \\(t\\), we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\(\vec{v}\\) at the position \\(\vec{x}\\) through simple differentiation i.e. computing 
+Given a velocity within a grid \\( \vec{v}_t \\) at time \\( t \\) , we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\( \vec{v} \\) at the position \\( \vec{x} \\) through simple differentiation i.e. computing 
 
 $$
 \vec{v}(t) = \vec{x}(t) - \vec{x}(t-\Delta t). 
 $$
 
-Knowing that local change dependent on the position \\(\vec{v}(x)\\), we can approximate the previous position of the velocity as
+Knowing that local change dependent on the position \\( \vec{v}(x) \\) , we can approximate the previous position of the velocity as
 
 $$
 \vec{x} = \vec{x} - \Delta t \cdot \vec{v}(x)
@@ -130,10 +130,11 @@ $$
 And to calculate the velocity at any arbitrary position within the grid, hence, to interpolate, we can calculate a **weighted average** of the surrounding values
 
 $$
- \bar{v} = w^{00} \cdot w^{10} \cdot v^{i,j} + w^{01} \cdot w^{10} \cdot v^{i+1,j}\\ \qquad \qquad+ w^{10} \cdot w^{11} \cdot v^{i,j+1} + w^{11} \cdot w^{11} \cdot v^{i+1,j+1}
+\bar{v} = w^{00} \cdot w^{10} \cdot v^{i,j} + w^{01} \cdot w^{10} \cdot v^{i+1,j} \\\\
+    \qquad \qquad + w^{10} \cdot w^{11} \cdot v^{i,j+1} + w^{11} \cdot w^{11} \cdot v^{i+1,j+1}
 $$
 
-where \\(w^{00} = 1 - x/h \\), \\(w^{01} = x/h \\), \\(w^{10} = 1 - y/h \\), and \\(w^{11} = 1 - y/h \\) for the height \\(y\\) within the points and the width \\(x\\) within the points.
+where \\( w^{00} = 1 - x/h \\) , \\( w^{01} = x/h \\) , \\( w^{10} = 1 - y/h \\) , and \\( w^{11} = 1 - y/h \\) for the height \\( y \\) within the points and the width \\( x \\) within the points.
 
 ### Smoke Advection & Streamlines
 We can store the density value at the center of each cell and _"advect"_ it just like the velocity components before. Quite useful for simulating smoke.
