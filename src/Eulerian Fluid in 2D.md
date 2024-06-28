@@ -1,6 +1,6 @@
 # Eulerian Fluid Simulator
 
-We will look at a 2D simulation here first. Though moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations.
+We will look at a 2D simulation here first, mainly following the work of Matthias Müller [^1]. Though moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations.
 
 We assume that:
 1. Water is an [incompressable fluid](https://en.wikipedia.org/wiki/Incompressible_flow).
@@ -140,4 +140,5 @@ We can store the density value at the center of each cell and _"advect"_ it just
 
 Calculating streamlines is rather straightforward as well. We start at the position \\(x_1\\) and step forward with the step-size \\(s\\) to get \\(x_2 \leftarrow s \cdot v(x_1) \\) and so on for \\(n\\) steps, each time sampling the velocity \\(v\\) at the corresponding position.
 
-
+## References
+[^1]: [Matthias Müller, _"How to write an Eulerian fluid simulator with 200 lines of code.", Ten Minute Physics, 2022](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
