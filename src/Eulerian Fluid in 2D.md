@@ -105,10 +105,10 @@ In the real world, fluids are made of particles. We don't have static grids like
 
 While we don't actually simulate particles, this idea is why we call it a semi-Lagrangian approach. (Remember! _"Lagrangian"_ rather than _"Eulerian"_ because now we consider particles rather than a grid.)
 
-Given a velocity within a grid \\(\vec{v}_t)\\) at time \\(t\\), we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\(\vec{v}\\) at the position \\(\vec{x}\\) through simple differentiation i.e. computing 
+Given a velocity within a grid \\(\vec{v}_t\\) at time \\(t\\), we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\(\vec{v}\\) at the position \\(\vec{x}\\) through simple differentiation i.e. computing 
 
 $$
-\vec{v}^{i,e}(t) = \vec{x}^{i,e}(t) - \vec{x}^{i,e}(t-\Delta t). 
+\vec{v}(t) = \vec{x}(t) - \vec{x}(t-\Delta t). 
 $$
 
 Knowing that local change dependent on the position \\(\vec{v}(x)\\), we can approximate the previous position of the velocity as
@@ -121,9 +121,23 @@ $$
 
 This is another linear approximation. As the result, the viscosity of the fluid is increased. One possible solution to this issue is [_"vorticity confinement"_]().
 
-### 2D Velocity
-To get the 2D velocity
+To get the total 2D velocity within the grid cell we can simply take the average of the surrounding velocities:
 
-### Streamlines
+$$
+v^{i,j} = (v^{i-1,j} + v^{i,j-1} +v^{i+1,j} +v^{i,j+1})/4.
+$$
+
+And to calculate the velocity at any arbitrary position within the grid, hence, to interpolate, we can calculate a **weighted average** of the surrounding values
+
+$$
+ \bar{v} = w^{00} \cdot w^{10} \cdot v^{i,j} + w^{01} \cdot w^{10} \cdot v^{i+1,j} + w^{10} \cdot w^{11} \cdot v^{i,j+1} + w^{11} \cdot w^{11} \cdot v^{i+1,j+1}
+$$
+
+where \\(w^{00} = 1 - x/h \\), \\(w^{01} = x/h \\), \\(w^{10} = 1 - y/h \\), and \\(w^{11} = 1 - y/h \\) for the height \\(y\\) within the points and the width \\(x\\) within the points.
+
+### Smoke Advection & Streamlines
+We can store the density value at the center of each cell and _"advect"_ it just like the velocity components before. Quite useful for simulating smoke.
+
+Calculating streamlines is rather straightforward as well. We start at the position \\(x_1\\) and step forward with the step-size \\(s\\) to get \\(x_2 \leftarrow s \cdot v(x_1) \\) and so on for \\(n\\) steps, each time sampling the velocity \\(v\\) at the corresponding position.
 
 
