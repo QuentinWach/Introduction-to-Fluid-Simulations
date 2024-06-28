@@ -5,6 +5,7 @@ date: June 28, 2024
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 U_FIELD = 0
 V_FIELD = 1
@@ -216,34 +217,44 @@ def initialize_smoke(fluid):
 
 # Example usage:
 if __name__ == "__main__":
+
+    # Initialize smoke as fluid
     density = 1.0
     numX, numY = 50, 50
-    h = 1.0
+    h = 50.0
     fluid = Fluid(density, numX, numY, h)
-    
-    # Initialize smoke
     initialize_smoke(fluid)
     
-    dt = 0.1
+    # Simulation parameters
+    dt = 1
     gravity = -9.8
     numIters = 10
     overRelaxation = 1.9
+    steps = 100
     
-    # Simulate one step
-    fluid.integrate(dt, gravity)
-    fluid.solveIncompressibility(numIters, dt, overRelaxation)
-    fluid.advectVel(dt)
-    fluid.advectSmoke(dt)
-    
-    # Visualize results
-    smoke_density = fluid.m.reshape((fluid.numX, fluid.numY))
-    
-    plt.imshow(smoke_density.T, origin='lower', cmap='gray')
-    plt.colorbar(label="Smoke Density")
-    plt.quiver(np.arange(fluid.numX), np.arange(fluid.numY), 
-               fluid.u.reshape((fluid.numX, fluid.numY)).T, 
-               fluid.v.reshape((fluid.numX, fluid.numY)).T, color='r')
-    plt.title("Smoke Density and Velocity Field")
-    plt.xlabel("X")
-    plt.ylabel("Y")
+    # Setup the visualization and simulation loop
+    fig, ax = plt.subplots()
+    def animate(frame):
+
+        # Update the fluid state
+        fluid.integrate(dt, gravity)
+        fluid.solveIncompressibility(numIters, dt, overRelaxation)
+        fluid.advectVel(dt)
+        fluid.advectSmoke(dt)
+        
+        smoke_density = fluid.m.reshape((fluid.numX, fluid.numY))
+        
+        ax.clear()
+        ax.imshow(smoke_density.T, origin='lower', cmap='gray')
+        ax.quiver(np.arange(fluid.numX), np.arange(fluid.numY), 
+                    fluid.u.reshape((fluid.numX, fluid.numY)).T, 
+                    fluid.v.reshape((fluid.numX, fluid.numY)).T, color='r')
+        ax.set_title("Smoke Density and Velocity Field")
+        ax.set_xlabel("X")
+        ax.set_ylabel("Y")
+
+
+    # Simulation loop
+    ani = animation.FuncAnimation(fig, animate, frames=steps, interval=50)
     plt.show()
+    

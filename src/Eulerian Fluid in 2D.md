@@ -143,6 +143,9 @@ Calculating streamlines is rather straightforward as well. We start at the posit
 ---
 ## References
 [^1]: [Matthias Müller, _"How to write an Eulerian fluid simulator with 200 lines of code."_, YouTube: Ten Minute Physics, 2022](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
-[^2]: [Matthias Müller, _"Notes On Eulerian Fluid Simulations."_, GitHub (PDF), 2022 ](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
+
+[^2]: [Matthias Müller, _"Notes On Eulerian Fluid Simulations."_, GitHub (PDF), 2022](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
+
 [^3]: https://gist.github.com/vassvik/f06a453c18eae03a9ad4dc8cc011d2dc
+
 [^4]: https://jamie-wong.com/2016/08/05/webgl-fluid-simulation/
