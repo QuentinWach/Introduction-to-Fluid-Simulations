@@ -1,6 +1,6 @@
 # Eulerian Fluid Simulator
 
-We will look at a 2D simulation here first, mainly following the work of Matthias Müller [^1]. Though moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations.
+We will look at a 2D simulation here first. Moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations. Below, we will be mainly following the work of Matthias Müller [^1] [^2] with added details and insights from various other sources.
 
 We assume that:
 1. Water is an [incompressable fluid](https://en.wikipedia.org/wiki/Incompressible_flow).
@@ -47,7 +47,7 @@ First, we compute the divergence.
 We can then handle obstacles or walls by fixing those velocity vectors. So for static object, that point of the border would be zero. But if it is moving this will of course impact the velocity and we can simulate how the fluid is being pushed around!
 
 ### General Case
-We define the scalar value \\(s^{i,j}\\) for each cell, where objects are zero and fluids 1. We update it as
+It is useful to define the scalar value \\(s^{i,j}\\) for each cell, where objects are zero and fluids 1. We update it as
 
 $$
 s \leftarrow  s^{i+1. j} + s^{i-1, j} + s^{i,j+1} + s^{i,j-1}
@@ -62,7 +62,7 @@ v_y^{i,j} \leftarrow v_y^{i,j} + d \cdot s^{i,j+1}/s \\\\
 v_y^{i,j+1} \leftarrow v_y^{i,j+1} + d \cdot s^{i,j+1}/s.
 $$
 
->**Question**: What is \\(s\\) ?
+Why?
 
 ### Solving the Grid
 Naturally, we want to solve the whole grid. One, and possibly the simplest method here is to use the [Gauss-Seidel method](https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method):
@@ -130,7 +130,7 @@ $$
 And to calculate the velocity at any arbitrary position within the grid, hence, to interpolate, we can calculate a **weighted average** of the surrounding values
 
 $$
- \bar{v} = w^{00} \cdot w^{10} \cdot v^{i,j} + w^{01} \cdot w^{10} \cdot v^{i+1,j} + w^{10} \cdot w^{11} \cdot v^{i,j+1} + w^{11} \cdot w^{11} \cdot v^{i+1,j+1}
+ \bar{v} = w^{00} \cdot w^{10} \cdot v^{i,j} + w^{01} \cdot w^{10} \cdot v^{i+1,j}\\ \qquad \qquad+ w^{10} \cdot w^{11} \cdot v^{i,j+1} + w^{11} \cdot w^{11} \cdot v^{i+1,j+1}
 $$
 
 where \\(w^{00} = 1 - x/h \\), \\(w^{01} = x/h \\), \\(w^{10} = 1 - y/h \\), and \\(w^{11} = 1 - y/h \\) for the height \\(y\\) within the points and the width \\(x\\) within the points.
@@ -140,5 +140,9 @@ We can store the density value at the center of each cell and _"advect"_ it just
 
 Calculating streamlines is rather straightforward as well. We start at the position \\(x_1\\) and step forward with the step-size \\(s\\) to get \\(x_2 \leftarrow s \cdot v(x_1) \\) and so on for \\(n\\) steps, each time sampling the velocity \\(v\\) at the corresponding position.
 
+---
 ## References
-[^1]: [Matthias Müller, _"How to write an Eulerian fluid simulator with 200 lines of code.", Ten Minute Physics, 2022](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
+[^1]: [Matthias Müller, _"How to write an Eulerian fluid simulator with 200 lines of code."_, YouTube: Ten Minute Physics, 2022](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
+[^2]: [Matthias Müller, _"Notes On Eulerian Fluid Simulations."_, GitHub (PDF), 2022 ](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
+[^3]: https://gist.github.com/vassvik/f06a453c18eae03a9ad4dc8cc011d2dc
+[^4]: https://jamie-wong.com/2016/08/05/webgl-fluid-simulation/
