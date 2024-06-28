@@ -98,11 +98,32 @@ e.g. \\(o=1.9\\) . Doing so increases the convergence of the method dramatically
 And the pressure values still remain correct!
 
 ### Semi-Lagrangian [Advection](https://en.wikipedia.org/wiki/Advection)
-In the real world, fluids are made of particles. We don't have static grids like we assume here. It is merely a useful abstraction. But we still need to move the velocity values in the grid just like the velocity state is carried by the particles in the real world!
+This section is going to be a bit weird and possibly difficult to understand.
+The core question is simply: _"How do the **velocities** stream through the fluid?"_
+
+In the real world, fluids are made of particles. We don't have static grids like we assume here. It is merely a useful abstraction. But we still need to move the velocity values in the grid just like the velocity state is carried by the particles in the real world since energy must be conserved!
 
 While we don't actually simulate particles, this idea is why we call it a semi-Lagrangian approach. (Remember! _"Lagrangian"_ rather than _"Eulerian"_ because now we consider particles rather than a grid.)
 
-Given a velocity within a grid \\(\vec{v}_t)\\) at time \\(t\\), we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\(\vec{v}\\) at the position \\(\vec{x}\\) where the
+Given a velocity within a grid \\(\vec{v}_t)\\) at time \\(t\\), we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\(\vec{v}\\) at the position \\(\vec{x}\\) through simple differentiation i.e. computing 
+
+$$
+\vec{v}^{i,e}(t) = \vec{x}^{i,e}(t) - \vec{x}^{i,e}(t-\Delta t). 
+$$
+
+Knowing that local change dependent on the position \\(\vec{v}(x)\\), we can approximate the previous position of the velocity as
+
+$$
+\vec{x} = \vec{x} - \Delta t \cdot \vec{v}(x)
+$$
+
+(Note that my notation here is everything else but consistent or precise but I hope you get the idea.)
+
+This is another linear approximation. As the result, the viscosity of the fluid is increased. One possible solution to this issue is [_"vorticity confinement"_]().
+
+### 2D Velocity
+To get the 2D velocity
+
 ### Streamlines
 
 

@@ -1,12 +1,12 @@
 # [Introduction to Fluid Simulations](https://quentinwach.com/Introduction-to-Fluid-Simulations)
 
-This book provides a free **hands-on** introduction to fluid simulations through **practical projects**. You will learn the basics of fluid mechanics, mathematical models, and how to program your own simple simulations using open-source tools (i.e. [`Python`](https://www.python.org/)).
+This book provides an **intuitive** and _completely free_ **hands-on** introduction to fluid simulations through **practical projects**. You will learn the basics of fluid mechanics, mathematical models, and how to program your own simple simulations using [`Python`](https://www.python.org/).
 
 The chapters are kept very short and you'll quickly have created your first project. [Start reading now!](https://quentinwach.com/Introduction-to-Fluid-Simulations)
 
 ## Summary
 
-- [Chapter 1: Getting Started with Fluid Simulations]()
+- [Chapter 1: Getting Started]()
 - [Chapter 2: Basic Concepts and Equations]()
 - [Chapter 3: Creating a Simple Fluid Solver](https://quentinwach.com/Introduction-to-Fluid-Simulations/Eulerian%20Fluid%20in%202D.html#eulerian-fluid-simulator)
 - [Chapter 4: Adding Forces and Boundaries]()
