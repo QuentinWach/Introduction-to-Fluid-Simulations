@@ -5,7 +5,7 @@ This book provides an **intuitive** and _completely free_ **hands-on** introduct
 The chapters are kept very short and you'll quickly have created your first project. [Start reading now!](https://quentinwach.com/Introduction-to-Fluid-Simulations)
 
 ## Summary
-- [Chapter 3: Creating a Simple Fluid Solver (50%)](https://quentinwach.com/Introduction-to-Fluid-Simulations/Eulerian%20Fluid%20in%202D.html#eulerian-fluid-simulator)
+- [Eulerian FLuid Simulation (50%)](https://quentinwach.com/Introduction-to-Fluid-Simulations/Eulerian%20Fluid%20in%202D.html#eulerian-fluid-simulator)
 
 ## Contribute
 I encourage you to become a contributer and co-author. I am writing this as I am learning. The outline is rough and will change almost entirely. So if you have some cool and exciting ideas and you want to chat about fluid simulations or simulations with me in general, please reach out to me here or on [X @QuentinWach](x.com/QuentinWach), or just submit a pull request!

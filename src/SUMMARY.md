@@ -17,7 +17,7 @@
     - [Introduction to the Navier-Stokes Equations]()
     - [Project: Simulating a Droplet Falling into a Still Water Surface]()
 -->
-- [Chapter 3: Creating a Simple Fluid Solver](Eulerian%20Fluid%20in%202D.md)
+- [Creating a Simple Fluid Solver](Eulerian%20Fluid%20in%202D.md)
     - [Grid-Based Methods: Eulerian Approach]()
     - [Setting Up a Grid]()
     - [Solving for Velocity and Pressure]()
