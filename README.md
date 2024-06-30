@@ -5,17 +5,12 @@ This book provides an **intuitive** and _completely free_ **hands-on** introduct
 The chapters are kept very short and you'll quickly have created your first project. [Start reading now!](https://quentinwach.com/Introduction-to-Fluid-Simulations)
 
 ## Summary
+- [Chapter 3: Creating a Simple Fluid Solver (50%)](https://quentinwach.com/Introduction-to-Fluid-Simulations/Eulerian%20Fluid%20in%202D.html#eulerian-fluid-simulator)
 
-- [Chapter 1: Getting Started]()
-- [Chapter 2: Basic Concepts and Equations]()
-- [Chapter 3: Creating a Simple Fluid Solver](https://quentinwach.com/Introduction-to-Fluid-Simulations/Eulerian%20Fluid%20in%202D.html#eulerian-fluid-simulator)
-- [Chapter 4: Adding Forces and Boundaries]()
-- [Chapter 5: Advanced Techniques in 2D]()
-- [Chapter 6: Moving to 3D Simulations]()
-- [Chapter 7: Visualizing Fluid Simulations]()
-- [Chapter 8: Optimizing Your Simulations]()
-- [Chapter 9: Final Project and Applications]()
-- [Conclusion](https://quentinwach.com/Introduction-to-Fluid-Simulations/CONCLUSION.html)
+## Contribute
+I encourage you to become a contributer and co-author. I am writing this as I am learning. The outline is rough and will change almost entirely. So if you have some cool and exciting ideas and you want to chat about fluid simulations or simulations with me in general, please reach out to me here or on [X @QuentinWach](x.com/QuentinWach), or just submit a pull request!
 
 ## FAQ
+>**Will there be a printed book or PDF I can buy?** Depending on how much progress I make with this project and how fast it goes, I do plan to compile everything in a beautiful layout for a book and publish it to be downloaded for free as a PDF or pay a little for a physical copy.
+
 >**Why are the MathJax equations written so weirdly?** The reason for this can be found in the [documentation of mdBook on MathJax](https://rust-lang.github.io/mdBook/format/mathjax.html). In short: They don't support this and I am bothered by it as well.

@@ -105,7 +105,7 @@ In the real world, fluids are made of particles. We don't have static grids like
 
 While we don't actually simulate particles, this idea is why we call it a semi-Lagrangian approach. (Remember! _"Lagrangian"_ rather than _"Eulerian"_ because now we consider particles rather than a grid.)
 
-Given a velocity within a grid \\( \vec{v}_t \\) at time \\( t \\) , we want to know where the velocity came from, how it changed, hence \\(\vec{v}_{t+\Delta t} \leftarrow \vec{v}_t \\). For that, we compute \\( \vec{v} \\) at the position \\( \vec{x} \\) through simple differentiation i.e. computing 
+Given a velocity within a grid \\( \vec{v}(t) \\) at time \\( t \\) , we want to know where the velocity came from, how it changed, hence \\( \vec{v}(t+\Delta t) \leftarrow \vec{v}(t) \\). For that, we compute \\( \vec{v} \\) at the position \\( \vec{x} \\) through simple differentiation i.e. computing 
 
 $$
 \vec{v}(t) = \vec{x}(t) - \vec{x}(t-\Delta t). 
@@ -147,7 +147,7 @@ Calculating streamlines is rather straightforward as well. We start at the posit
 
 [^2]: [Matthias Müller, _"Notes On Eulerian Fluid Simulations."_, GitHub, 2022: _https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf_ (Accessed: June 28, 2024)](https://matthias-research.github.io/pages/tenMinutePhysics/17-fluidSim.pdf)
 
-[^3]: [_"Realtime Fluid Simulation: Projection"_](https://gist.github.com/vassvik/f06a453c18eae03a9ad4dc8cc011d2dc)
+[^3]: [vassvik, _"Realtime Fluid Simulation: Projection"_](https://gist.github.com/vassvik/f06a453c18eae03a9ad4dc8cc011d2dc)
 
 [^4]: [](https://jamie-wong.com/2016/08/05/webgl-fluid-simulation/)
 
@@ -157,7 +157,6 @@ Calculating streamlines is rather straightforward as well. We start at the posit
 [^MAsh_JosStam_Blog]: [Michael Ash, _"Fluid Simulation for Dummies"_, Blog, 2006: _https://mikeash.com/pyblog/fluid-simulation-for-dummies.html_ (Accessed: June 29, 2024)](https://mikeash.com/pyblog/fluid-simulation-for-dummies.html) The simulation code and ideas that are presented are based on Jos Stam's paper _Real-Time Fluid Dynamics for Games_ [^ClassicRealGameFluids]. How to parallelize the simulation and render the output in 3D is elaborated in Ash's Master's thesis [^AshMaster].
 
 [^AshMaster]: [Michael Ash, _"Master Thesis: Simulation and Visualization of a 3D Fluid"_, 2005](https://www.mikeash.com/thesis/thesis-en.pdf)
-
 
 ## Other Research Publications
 [^Visco]: [S. Clavet, P.Beaudoin, and P. Poulin, _"Particle-based Viscoelastic Fluid Simulation"_, ACM SIGGRAPH Symposium on Computer Animation, 2005](https://www.researchgate.net/profile/Pierre-Poulin/publication/220789321_Particle-based_viscoelastic_fluid_simulation/links/0c96051824f22359e2000000/Particle-based-viscoelastic-fluid-simulation.pdf?origin=publication_detail&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uRG93bmxvYWQiLCJwcmV2aW91c1BhZ2UiOiJwdWJsaWNhdGlvbiJ9fQ)
