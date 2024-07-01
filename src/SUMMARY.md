@@ -2,27 +2,27 @@
 
 # Summary
 
-[Introduction](README.md)
 
-<!--
-- [Chapter 1: Getting Started with Fluid Simulations]()
-    - [What is Fluid Simulation?]()
-    - [Tools and Software Needed]()
-    - [Setting Up Your Environment]()
-    - [First Project: Simulating Water Flow in a Pipe]()
 
-- [Chapter 2: Basic Concepts and Equations]()
+- [Introduction]()
+    - [What, Why, How?]()
     - [Understanding Fluids: Liquids and Gases]()
     - [Key Properties: Density, Pressure, and Velocity]()
     - [Introduction to the Navier-Stokes Equations]()
-    - [Project: Simulating a Droplet Falling into a Still Water Surface]()
--->
-- [Creating a Simple Fluid Solver](Eulerian%20Fluid%20in%202D.md)
+
+- [A Simple Fluid Solver](Eulerian%20Fluid%20in%202D.md)
+    - [Tools and Software Needed & Setting Up Your Environment]()
     - [Grid-Based Methods: Eulerian Approach]()
     - [Setting Up a Grid]()
     - [Solving for Velocity and Pressure]()
-    - [Project: Simulating a Simple 2D Water Flow]()
+    - [Simulating a Simple 2D Water Flow]()
 <!--
+
+- Solid objects inside the water
+- Smoke and fire simulations
+  - Turbulance
+- 
+
 - [Chapter 4: Adding Forces and Boundaries]()
     - [Introducing External Forces: Gravity and Wind]()
     - [Handling Boundaries: Walls and Obstacles]()
