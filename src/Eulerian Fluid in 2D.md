@@ -1,5 +1,7 @@
 # Eulerian Fluid Simulator
-<img align="right" width="40%" margin-left="20px" src="1st_test_smoke.png"> 
+
+<img align="right" width="40%" margin-left="20px" src="1st_test_smoke.png">
+
 We will look at a 2D simulation here first. Moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations. Below, we will be mainly following the work of Matthias Müller [^1] [^2] with added details and insights from various other sources.
 
 We assume that:
