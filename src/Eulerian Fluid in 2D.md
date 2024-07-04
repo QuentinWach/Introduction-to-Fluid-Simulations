@@ -1,13 +1,11 @@
 # Eulerian Fluid Simulator
-
+<img align="right" width="40%" margin-left="20px" src="1st_test_smoke.png"> 
 We will look at a 2D simulation here first. Moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations. Below, we will be mainly following the work of Matthias Müller [^1] [^2] with added details and insights from various other sources.
 
 We assume that:
 1. Water is an [incompressable fluid](https://en.wikipedia.org/wiki/Incompressible_flow).
 2. It has no [viscosity](https://en.wikipedia.org/wiki/Viscosity) (even though adding it would be rather easy).
 
-
-![alt text](1st_test_smoke.png)
 
 Our velocity vector
 
@@ -160,6 +158,8 @@ Calculating streamlines is rather straightforward as well. We start at the posit
 [^MAsh_JosStam_Blog]: [Michael Ash, _"Fluid Simulation for Dummies"_, Blog, 2006: _https://mikeash.com/pyblog/fluid-simulation-for-dummies.html_ (Accessed: June 29, 2024)](https://mikeash.com/pyblog/fluid-simulation-for-dummies.html) The simulation code and ideas that are presented are based on Jos Stam's paper _Real-Time Fluid Dynamics for Games_ [^ClassicRealGameFluids]. How to parallelize the simulation and render the output in 3D is elaborated in Ash's Master's thesis [^AshMaster].
 
 [^AshMaster]: [Michael Ash, _"Master Thesis: Simulation and Visualization of a 3D Fluid"_, 2005](https://www.mikeash.com/thesis/thesis-en.pdf)
+
+[^YTVideo]: [The Coding Train, _"Coding Challenge #132: Fluid Simulation"_](https://www.youtube.com/watch?v=alhpH6ECFvQ)
 
 ## Other Research Publications
 [^Visco]: [S. Clavet, P.Beaudoin, and P. Poulin, _"Particle-based Viscoelastic Fluid Simulation"_, ACM SIGGRAPH Symposium on Computer Animation, 2005](https://www.researchgate.net/profile/Pierre-Poulin/publication/220789321_Particle-based_viscoelastic_fluid_simulation/links/0c96051824f22359e2000000/Particle-based-viscoelastic-fluid-simulation.pdf?origin=publication_detail&_tp=eyJjb250ZXh0Ijp7ImZpcnN0UGFnZSI6InB1YmxpY2F0aW9uIiwicGFnZSI6InB1YmxpY2F0aW9uRG93bmxvYWQiLCJwcmV2aW91c1BhZ2UiOiJwdWJsaWNhdGlvbiJ9fQ)
