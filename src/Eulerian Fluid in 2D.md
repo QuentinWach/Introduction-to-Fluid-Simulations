@@ -7,7 +7,7 @@ We assume that:
 2. It has no [viscosity](https://en.wikipedia.org/wiki/Viscosity) (even though adding it would be rather easy).
 
 
-![alt text](imgs/1st_test_smoke.png)
+![alt text](1st_test_smoke.png)
 
 Our velocity vector
 
