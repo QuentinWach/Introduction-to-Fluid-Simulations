@@ -1,9 +1,5 @@
 # Summary
 
-# Summary
-
-
-
 - [Introduction]()
     - [What, Why, How?]()
     - [Understanding Fluids: Liquids and Gases]()
@@ -12,16 +8,34 @@
 
 - [A Simple Fluid Solver](Eulerian%20Fluid%20in%202D.md)
     - [Tools and Software Needed & Setting Up Your Environment]()
+    - [Levels of Abstraction](Scale.md)
     - [Grid-Based Methods: Eulerian Approach]()
     - [Setting Up a Grid]()
     - [Solving for Velocity and Pressure]()
     - [Simulating a Simple 2D Water Flow]()
 <!--
 
-- Solid objects inside the water
-- Smoke and fire simulations
+Take apart: https://www.youtube.com/watch?v=rSKMYc1CQHE
+
+- Solid Objects
+  - Floating Boat
+  - Two-Way Interaction (Honey)
+
+- FLIP Fluid Simulation: Bubbles, Foam, and Spray: See https://www.youtube.com/watch?v=XmzBREkK8kY
+
+- Smoke and Fire: See https://www.youtube.com/watch?v=RsgmS3ZxDtc
+
+  - Lattice Boltzmann Method
   - Turbulance
-- 
+  - Heat (Melting Objects)
+
+- Sparse Grids for Details and Scale
+  - https://www.youtube.com/watch?v=7VPPKKpde3A
+
+- Hardware Acceleration
+  - GPUs and High Performance Computing
+
+- Machine Learning Acceleration
 
 - [Chapter 4: Adding Forces and Boundaries]()
     - [Introducing External Forces: Gravity and Wind]()
