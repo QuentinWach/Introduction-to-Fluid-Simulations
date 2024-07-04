@@ -6,6 +6,9 @@ We assume that:
 1. Water is an [incompressable fluid](https://en.wikipedia.org/wiki/Incompressible_flow).
 2. It has no [viscosity](https://en.wikipedia.org/wiki/Viscosity) (even though adding it would be rather easy).
 
+
+![alt text](imgs/1st_test_smoke.png)
+
 Our velocity vector
 
 $$
