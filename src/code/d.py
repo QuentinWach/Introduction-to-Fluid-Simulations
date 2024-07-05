@@ -146,7 +146,7 @@ diff = 0.0002
 # Time step
 dt = 0.1
 fps = 24
-steps = fps*4
+steps = fps//2
 # Grid size
 N = 250
 size = (N + 2, N + 2)
@@ -188,9 +188,9 @@ def init():
 ani = FuncAnimation(fig, update, frames=steps, init_func=init, blit=False)
 
 # Save the animation as an MP4 file
-print("Rendering animation...")
-writer = FFMpegWriter(fps=fps, metadata=dict(artist='Me'), bitrate=1800)
-ani.save("fluid_simulation.mp4", writer=writer)
+#print("Rendering animation...")
+#writer = FFMpegWriter(fps=fps, metadata=dict(artist='Me'), bitrate=1800)
+#ani.save("fluid_simulation.mp4", writer=writer)
 
 print("Showing animation...")
 plt.show()
