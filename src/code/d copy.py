@@ -35,6 +35,7 @@ def diffuse(b, x, x0, diff, dt, s):
     a = dt * diff * N * N
     lin_solve(b, x, x0, a, 1 + 4 * a, s)
 
+# Update the project function as suggested in the previous response
 def project(u, v, p, div, s):
     h = 1.0 / N
     div[1:-1, 1:-1] = -0.5 * h * (u[2:, 1:-1] - u[:-2, 1:-1] + v[1:-1, 2:] - v[1:-1, :-2])
@@ -88,14 +89,16 @@ def step(u, v, u0, v0, dens, dens0, s):
     diffuse(0, dens0, dens, diff, dt, s)
     advect(0, dens, dens0, u, v, dt, s)
 
+
+
 # Set parameters
 np.random.seed(42)
-N = 100  # grid size
+N = 200  # Increased grid size for better resolution
 fps = 24
 dt = 1.0 / fps
-steps = fps*1
-diff = 0.0001  # diffusion rate
-visc = 0.00001  # viscosity
+steps = fps*3
+diff = 0.0001
+visc = 0.00001
 
 # Initialize variables
 u = np.zeros((N, N))
@@ -107,17 +110,22 @@ dens_prev = np.zeros((N, N))
 
 # Create s-matrix (0 for fluid, 1 for solid)
 s = np.zeros((N, N))
+
 # Add solid walls
-s[0, :] = s[-1, :] = s[:, 0] = s[:, -1] = 1
-# Add some solid objects inside the fluid
-s[30:40, 30:40] = 1
-s[100:120, 80:100] = 1
+#s[0, :] = s[-1, :] = s[:, 0] = s[:, -1] = 1
+
+# Add a circular obstacle in the center
+center = N // 2
+radius = N // 8
+y, x = np.ogrid[:N, :N]
+mask = (x - center)**2 + (y - center)**2 <= radius**2
+s[mask] = 1
 
 # Create the figure
-fig, ax = plt.subplots(figsize=(4, 4), dpi=150)
+fig, ax = plt.subplots(figsize=(8, 8), dpi=100)
 
 # Create a custom colormap with red for obstacles
-cmap = plt.get_cmap('bone_r').copy()
+cmap = plt.get_cmap('viridis').copy()
 cmap.set_bad(color='red')
 
 # Use the custom colormap for the imshow
@@ -135,34 +143,38 @@ fig.tight_layout()
 
 # Animation function
 def update(frame):
-    # Randomly add drops with velocities
-    if frame % 1 == 0:
-        x = np.random.randint(1, N-1)
-        y = np.random.randint(1, N-1)
-        if s[x, y] == 0:  # Only add fluid to non-solid cells
-            dens[x-4:x+6, y-4:y+6] += 0.9
-            v[x-4:x+6, y-4:y+6] += 2 * np.random.randn()
-            u[x-4:x+6, y-4:y+6] += 2 * np.random.randn()
-    # Add gravity
-    #v[1:N-1,1:N-1] += 0.05  # Changed from u to v for downward gravity
-    # Add random velocity disturbances
-    u[:, :] += np.random.rand(N, N) * 0.1 - 0.05
-    v[:, :] += np.random.rand(N, N) * 0.1 - 0.05
+    global u, v, dens
+    
+    # Add fluid from the left side
+    dens[80:120, 1:3] += 0.4
+    v[80:120, 1:3] += 2.  # Horizontal velocity to the right
+    
+    # Add some random perturbations
+    #u += np.random.randn(N, N) * 0.05
+    #v += np.random.randn(N, N) * 0.05
+
+    # move to the right
+    #v[:, :] += 0.2
+    
     # Dissipate densities
-    dens[:,:] *= 0.98
+    dens *= 0.95
+    
     # Step forward in time
     step(u, v, u_prev, v_prev, dens, dens_prev, s)
+    
     # Create a masked array where obstacles are masked
     masked_dens = np.ma.array(dens, mask=s)
+    
     # Draw the image
     im.set_array(masked_dens)
+    
     # Update
     print(f"Frame {frame}/{steps}. {np.round((frame/steps)*100,1)}% done.")
     return [im]
 
 # Run and save the animation as an MP4 file
-anim = FuncAnimation(fig, update, frames=steps, blit=False)
+anim = FuncAnimation(fig, update, frames=steps, blit=True)
 print("Rendering animation...")
 writer = FFMpegWriter(fps=fps, bitrate=1800)
-anim.save("fluid_simulation.mp4", writer=writer)
+anim.save("fluid_simulation_ball_obstacle.mp4", writer=writer)
 print("Finished rendering.")
