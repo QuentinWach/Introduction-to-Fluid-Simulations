@@ -34,6 +34,7 @@ The indices for the grid positions are notated as \\(i, j\\) .
 |:-:| 
 | **Figure 2.** *The staggered grid within which all the fluid dynamics are computed.* |
 
+![Fig2](fig2.svg)
 
 ### Velocity Update
 Now, for all \\(i,j\\) we update the velocity
