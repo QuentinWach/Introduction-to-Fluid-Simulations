@@ -98,8 +98,6 @@ def step(u, v, u0, v0, dens, dens0, s):
     diffuse(0, dens0, dens, diff, dt, s)
     advect(0, dens, dens0, u, v, dt, s)
 
-
-
 # Set parameters
 np.random.seed(42)
 N = 200  # Increased grid size for better resolution

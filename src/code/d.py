@@ -90,10 +90,10 @@ def step(u, v, u0, v0, dens, dens0, s):
 
 # Set parameters
 np.random.seed(42)
-N = 100  # grid size
-fps = 24
-dt = 1.0 / fps
-steps = fps*1
+N = 150  # grid size
+fps = 15 
+dt = 1.5 / fps
+steps = fps*3
 diff = 0.0001  # diffusion rate
 visc = 0.00001  # viscosity
 
@@ -133,23 +133,48 @@ ax.spines['bottom'].set_visible(False)
 ax.spines['left'].set_visible(False)
 fig.tight_layout()
 
+def rand_inkjets():
+    x = np.random.randint(1, N-1)
+    y = np.random.randint(1, N-1)
+    if s[x, y] == 0:
+        dens[x-4:x+6, y-4:y+6] += 0.9
+        v[x-4:x+6, y-4:y+6] += 2 * np.random.randn()
+        u[x-4:x+6, y-4:y+6] += 2 * np.random.randn()
+
+def top_down_inkjets():
+    x = N//2
+    y = 5
+    
+    if s[x, y] == 0:
+        dens[y:y+3, x-30:x+30] += 0.9
+        u[y:y+3, x-30:x+30] += 1
+
+def gravity(strength=0.01):
+    u[2:N-2,2:N-2] += strength  # Changed from u to v for downward gravity
+
+def global_disturbances(strength=1.0):
+    u[:, :] += strength * (np.random.rand(N, N) * 0.1 - 0.05)
+    v[:, :] += strength * (np.random.rand(N, N) * 0.1 - 0.05)
+
+def global_dissipation():
+    dens[:,:] *= 0.99
+
 # Animation function
 def update(frame):
-    # Randomly add drops with velocities
-    if frame % 1 == 0:
-        x = np.random.randint(1, N-1)
-        y = np.random.randint(1, N-1)
-        if s[x, y] == 0:  # Only add fluid to non-solid cells
-            dens[x-4:x+6, y-4:y+6] += 0.9
-            v[x-4:x+6, y-4:y+6] += 2 * np.random.randn()
-            u[x-4:x+6, y-4:y+6] += 2 * np.random.randn()
+    if frame % 2 == 0:
+        # Randomly add drops with velocities
+        #rand_inkjets()
+
+        # Add inkjets from top to bottom
+        top_down_inkjets()
+
+
     # Add gravity
-    #v[1:N-1,1:N-1] += 0.05  # Changed from u to v for downward gravity
+    #gravity()	
     # Add random velocity disturbances
-    u[:, :] += np.random.rand(N, N) * 0.1 - 0.05
-    v[:, :] += np.random.rand(N, N) * 0.1 - 0.05
+    #global_disturbances()
     # Dissipate densities
-    dens[:,:] *= 0.98
+    global_dissipation()
     # Step forward in time
     step(u, v, u_prev, v_prev, dens, dens_prev, s)
     # Create a masked array where obstacles are masked
@@ -161,7 +186,7 @@ def update(frame):
     return [im]
 
 # Run and save the animation as an MP4 file
-anim = FuncAnimation(fig, update, frames=steps, blit=False)
+anim = FuncAnimation(fig, update, frames=steps, interval=1000//fps, blit=False)
 print("Rendering animation...")
 writer = FFMpegWriter(fps=fps, bitrate=1800)
 anim.save("fluid_simulation.mp4", writer=writer)

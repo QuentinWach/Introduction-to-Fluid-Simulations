@@ -1,6 +1,8 @@
 # Eulerian Fluid Simulator
 
+<!--
 <img align="right" width="40%" margin-left="20px" src="1st_test_smoke.png">
+-->
 
 We will look at a 2D simulation here first. Moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations. Below, we will be mainly following the work of Matthias Müller [^1] [^2] with added details and insights from various other sources.
 
@@ -22,6 +24,16 @@ $$
 are saved not within the centers of the cells (_"collocated"_ grid) but rather at the boundaries creating a so called _"staggered"_ grid.
 
 The indices for the grid positions are notated as \\(i, j\\) .
+
+|![Fig1](fig1.svg)|
+|:-:| 
+| **Figure 1.** *Outline of the fluid dynamics algorithm. We first initializse the densities and objects within the grid, then enter the simulation loop where we apply forces at each step, diffuse the fluid, the "project" in order to enforce compressibility, and lastely "advect" in order to redirect the velocities of the fluid.* |
+
+
+|![Fig2](fig2.svg)|
+|:-:| 
+| **Figure 2.** *The staggered grid within which all the fluid dynamics are computed.* |
+
 
 ### Velocity Update
 Now, for all \\(i,j\\) we update the velocity
