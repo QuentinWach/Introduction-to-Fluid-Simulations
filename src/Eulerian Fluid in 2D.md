@@ -1,23 +1,33 @@
-# Eulerian Fluid Simulator
+# Jon Stam's Real-Time Fluid Simulator
 
 <!--
 <img align="right" width="40%" margin-left="20px" src="1st_test_smoke.png">
 -->
 
-We will look at a 2D simulation here first. Moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations. Below, we will be mainly following the work of Matthias Müller [^1] [^2] with added details and insights from various other sources.
+We will look at a 2D simulation here first using a grid-approach or _"Eulerian"_ approach. Moving to 3D is quite trivial. It is _Eulerian_ because we use a grid rather than points for the computations. Below, we will be mainly following the work of Matthias Müller [^1] [^2] with added details and insights from various other sources.
 
 We assume that:
 1. Water is an [incompressable fluid](https://en.wikipedia.org/wiki/Incompressible_flow).
 2. It has no [viscosity](https://en.wikipedia.org/wiki/Viscosity) (even though adding it would be rather easy).
 
+The steps we have to take to create a fast and more or less realist looking fluid simulation as typical for games are simple:
+1. Initialize the densities within the grid as well as where the obstacles are. (More on that in a bit.)
+2. Add/apply forces like gravity, wind, or random turbulances.
+3. "Project" the grid. In other words, enforce that the density in every cell has the correct density such that the fluid is not compressed.
+4. "Advect" the velocities of the fluids.
+
+|![Fig1](fig1.svg)|
+|:-:| 
+| **Figure 1.** *Outline of the fluid dynamics algorithm. We first initializse the densities and objects within the grid, then enter the simulation loop where we apply forces at each step, diffuse the fluid, the "project" in order to enforce compressibility, and lastely "advect" in order to redirect the velocities of the fluid.* |
+
 
 Our velocity vector
 
 $$
-    \vec{v} =
+    \vec{\text{v} } =
         \begin{pmatrix}
-            v_x \\\\
-            v_y 
+            u \\\\
+            v
         \end{pmatrix}
 $$
 
@@ -25,16 +35,10 @@ are saved not within the centers of the cells (_"collocated"_ grid) but rather a
 
 The indices for the grid positions are notated as \\(i, j\\) .
 
-|![Fig1](fig1.svg)|
-|:-:| 
-| **Figure 1.** *Outline of the fluid dynamics algorithm. We first initializse the densities and objects within the grid, then enter the simulation loop where we apply forces at each step, diffuse the fluid, the "project" in order to enforce compressibility, and lastely "advect" in order to redirect the velocities of the fluid.* |
-
 
 |![Fig2](fig2.svg)|
 |:-:| 
 | **Figure 2.** *The staggered grid within which all the fluid dynamics are computed.* |
-
-![Fig2](fig2.svg)
 
 ### Velocity Update
 Now, for all \\(i,j\\) we update the velocity
