@@ -5,7 +5,7 @@
 
 This book aims to provide an **intuitive** and _completely free_ **hands-on** introduction to fluid simulations through **practical projects**. You will learn the basics of fluid mechanics, mathematical models, and how to program your own simple simulations using [`Python`](https://www.python.org/).
 
-The chapters are meant to be kept very short and you'll quickly have created your first project. [Start reading now!](https://quentinwach.com/Introduction-to-Fluid-Simulations)
+The chapters are meant to be kept very short and you'll quickly have created your first project. <!--[Start reading now!](https://quentinwach.com/Introduction-to-Fluid-Simulations)-->
 
 ## Summary
 - [Eulerian Fluid Simulation (30%)](https://quentinwach.com/Introduction-to-Fluid-Simulations/Eulerian%20Fluid%20in%202D.html#eulerian-fluid-simulator)
